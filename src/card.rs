@@ -48,3 +48,16 @@ impl TryFrom<u8> for CardValue {
         Self::new(value).ok_or(())
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use crate::card::CardValue;
+
+    #[test]
+    fn card_value() {
+        assert!(CardValue::new(0).is_none());
+        assert!(CardValue::new(14).is_none());
+        assert!(CardValue::new(1).is_some());
+        assert_eq!(CardValue::new(5).unwrap().inner(), 5);
+    }
+}
