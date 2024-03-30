@@ -38,13 +38,14 @@ fn get_skat_deck() -> [Card; 32] {
     ]
 }
 
-fn get_shuffled_skat_deck() -> [Card; 32] {
+pub fn get_shuffled_skat_deck() -> [Card; 32] {
     let mut rng = thread_rng();
     let mut deck = get_skat_deck();
     deck.shuffle(&mut rng);
     deck
 }
 
+#[derive(Clone)]
 pub struct Card {
     value: CardValue,
     color: CardColor,
@@ -56,6 +57,7 @@ impl Card {
     }
 }
 
+#[derive(Clone)]
 pub enum CardColor {
     Clubs,
     Diamond,
@@ -69,6 +71,7 @@ pub enum CardColor {
 /// - 11 -> Jack
 /// - 12 -> Queen
 /// - 13 -> King
+#[derive(Clone)]
 pub struct CardValue(u8);
 
 impl CardValue {

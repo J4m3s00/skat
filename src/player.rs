@@ -20,6 +20,12 @@ impl Player {
         self.hand.push(card);
     }
 
+    pub fn give_cards(&mut self, cards: impl Iterator<Item = Card>) {
+        for c in cards {
+            self.give_card(c);
+        }
+    }
+
     /// Removes card from the hand and returns it
     /// # Panics
     /// Panics if `card_index` is out of bounds
@@ -30,5 +36,9 @@ impl Player {
             card_index
         );
         self.hand.remove(card_index)
+    }
+
+    pub fn clear_hand(&mut self) {
+        self.hand.clear();
     }
 }

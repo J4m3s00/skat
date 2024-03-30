@@ -1,4 +1,10 @@
-mod card;
-mod player;
+use game::Game;
 
-fn main() {}
+mod card;
+mod game;
+mod player;
+mod player_interface;
+
+fn main() {
+    let game = Game::new();
+}
