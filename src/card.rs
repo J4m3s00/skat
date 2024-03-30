@@ -1,4 +1,49 @@
+use rand::{seq::SliceRandom, thread_rng};
 use std::convert::TryFrom;
+
+fn get_skat_deck() -> [Card; 32] {
+    [
+        Card::new(CardValue::new_unchecked(1), CardColor::Clubs),
+        Card::new(CardValue::new_unchecked(7), CardColor::Clubs),
+        Card::new(CardValue::new_unchecked(8), CardColor::Clubs),
+        Card::new(CardValue::new_unchecked(9), CardColor::Clubs),
+        Card::new(CardValue::new_unchecked(10), CardColor::Clubs),
+        Card::new(CardValue::new_unchecked(11), CardColor::Clubs),
+        Card::new(CardValue::new_unchecked(12), CardColor::Clubs),
+        Card::new(CardValue::new_unchecked(13), CardColor::Clubs),
+        Card::new(CardValue::new_unchecked(1), CardColor::Spades),
+        Card::new(CardValue::new_unchecked(7), CardColor::Spades),
+        Card::new(CardValue::new_unchecked(8), CardColor::Spades),
+        Card::new(CardValue::new_unchecked(9), CardColor::Spades),
+        Card::new(CardValue::new_unchecked(10), CardColor::Spades),
+        Card::new(CardValue::new_unchecked(11), CardColor::Spades),
+        Card::new(CardValue::new_unchecked(12), CardColor::Spades),
+        Card::new(CardValue::new_unchecked(13), CardColor::Spades),
+        Card::new(CardValue::new_unchecked(1), CardColor::Heart),
+        Card::new(CardValue::new_unchecked(7), CardColor::Heart),
+        Card::new(CardValue::new_unchecked(8), CardColor::Heart),
+        Card::new(CardValue::new_unchecked(9), CardColor::Heart),
+        Card::new(CardValue::new_unchecked(10), CardColor::Heart),
+        Card::new(CardValue::new_unchecked(11), CardColor::Heart),
+        Card::new(CardValue::new_unchecked(12), CardColor::Heart),
+        Card::new(CardValue::new_unchecked(13), CardColor::Heart),
+        Card::new(CardValue::new_unchecked(1), CardColor::Diamond),
+        Card::new(CardValue::new_unchecked(7), CardColor::Diamond),
+        Card::new(CardValue::new_unchecked(8), CardColor::Diamond),
+        Card::new(CardValue::new_unchecked(9), CardColor::Diamond),
+        Card::new(CardValue::new_unchecked(10), CardColor::Diamond),
+        Card::new(CardValue::new_unchecked(11), CardColor::Diamond),
+        Card::new(CardValue::new_unchecked(12), CardColor::Diamond),
+        Card::new(CardValue::new_unchecked(13), CardColor::Diamond),
+    ]
+}
+
+fn get_shuffled_skat_deck() -> [Card; 32] {
+    let mut rng = thread_rng();
+    let mut deck = get_skat_deck();
+    deck.shuffle(&mut rng);
+    deck
+}
 
 pub struct Card {
     value: CardValue,
