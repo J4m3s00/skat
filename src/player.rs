@@ -20,6 +20,9 @@ impl Player {
         self.hand.push(card);
     }
 
+    /// Removes card from the hand and returns it
+    /// # Panics
+    /// Panics if `card_index` is out of bounds
     pub fn play_card(&mut self, card_index: usize) -> Card {
         assert!(
             card_index < self.hand.len(),
